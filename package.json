@@ -1,0 +1,51 @@
+{
+    "name": "express-sys-api",
+    "version": "1.0.0",
+    "description": "Mule4-based API Led ExpressJS Template from vonuyvicoo/express-api-led-template",
+    "main": "dist/interface/main-api-interface.js",
+    "type": "module",
+    "scripts": {
+        "dev": "tsx watch --clear-screen=false interface/main-api-interface.ts",
+        "build": "npx prisma generate && tsc && tsc-alias && cp -r ./generated ./dist/ && cp -r ./docs ./dist/",
+        "start": "node dist/interface/main-api-interface.js",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "generate-zod": "npx ts-to-zod types/types.ts schemas/zod-schemas.ts"
+    },
+    "author": "Von Uyvico",
+    "license": "ISC",
+    "dependencies": {
+        "@prisma/client": "^6.16.3",
+        "bcrypt": "^6.0.0",
+        "bcryptjs": "^3.0.2",
+        "cookie-parser": "^1.4.7",
+        "dotenv": "^17.2.3",
+        "express": "^5.1.0",
+        "express-basic-auth": "^1.2.1",
+        "jsonwebtoken": "^9.0.2",
+        "swagger-ui-dist": "^5.0.0",
+        "swagger-ui-express": "^5.0.1",
+        "totp-generator": "^2.0.0",
+        "uuid": "^13.0.0",
+        "yamljs": "^0.3.0",
+        "zod": "^4.1.11"
+    },
+    "devDependencies": {
+        "@types/bcrypt": "^6.0.0",
+        "@types/cookie-parser": "^1.4.9",
+        "@types/express": "^5.0.3",
+        "@types/jsonwebtoken": "^9.0.10",
+        "@types/node": "^24.6.2",
+        "@types/swagger-ui-dist": "^3.30.6",
+        "@types/swagger-ui-express": "^4.1.8",
+        "@types/yamljs": "^0.2.34",
+        "nodemon": "^3.1.10",
+        "prisma": "^6.16.3",
+        "ts-node": "^10.9.2",
+        "ts-node-dev": "^2.0.0",
+        "ts-to-zod": "^4.0.1",
+        "tsc-alias": "^1.8.16",
+        "tsconfig-paths": "^4.2.0",
+        "tsx": "^4.20.6",
+        "typescript": "^5.9.3"
+    }
+}

@@ -1,0 +1,800 @@
+openapi: 3.0.0
+info:
+  title: OTPly API
+  description: >-
+    OTPly is meant for a per-organization deployment. This is not meant to be
+    deployed on a cross-organizational scale.
+
+
+    Copyright (c) 2025 Von Uyvico.
+  version: 1.0.0
+servers:
+  - url: http://{{otply_endpoint}}
+tags:
+  - name: Organizations
+paths:
+  /api/v1/organizations:
+    get:
+      tags:
+        - Organizations
+      summary: Get Organizations
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '499'
+            ETag:
+              schema:
+                type: string
+                example: W/"1f3-+/nSTybU9gDszl5YRaihyupgsi4"
+            Date:
+              schema:
+                type: string
+                example: Thu, 23 Oct 2025 22:29:54 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "correlationId": "50b4646a-d129-4f51-82db-7a59707e1249",
+                    "organizations": [
+                        {
+                            "id": "032e6ce1-8812-4b19-bc8a-2736d64a31fa",
+                            "name": "Sanghaya Solutions"
+                        },
+                        {
+                            "id": "547eb153-c788-4876-821f-5b9ddf6f4724",
+                            "name": "Sanghaya Labs"
+                        },
+                        {
+                            "id": "b44244ce-ed43-4816-8a8c-49affa6bc91a",
+                            "name": "Sanghaya Labs"
+                        },
+                        {
+                            "id": "215c951b-207c-4ac1-9b92-0c47df3e7b1c",
+                            "name": "Sanghaya Labs 2"
+                        },
+                        {
+                            "id": "61067b3a-e301-4459-bdbf-68caaf8f5779",
+                            "name": "Sanghaya Labs 3"
+                        },
+                        {
+                            "id": "8689c464-371f-4782-b392-30578a0441c0",
+                            "name": "Sanghaya Labs 4"
+                        }
+                    ]
+                }
+    post:
+      tags:
+        - Organizations
+      summary: Create Organization
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Sanghaya Labs 5
+      responses:
+        undefined:
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "correlationId": "1e3ffec6-4702-4c05-b8b2-16ceebdac2b0",
+                    "organization": {
+                        "id": "8689c464-371f-4782-b392-30578a0441c0",
+                        "name": "Sanghaya Labs 4"
+                    },
+                    "message": "Please login again."
+                }
+  /api/v1/organizations/8689c464-371f-4782-b392-30578a0441c0:
+    get:
+      tags:
+        - Organizations
+      summary: Get Organization Details
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '223'
+            ETag:
+              schema:
+                type: string
+                example: W/"df-Gyv0gS5L8DlidsOak671joxa3Ww"
+            Date:
+              schema:
+                type: string
+                example: Thu, 23 Oct 2025 22:29:51 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "correlationId": "2e764df8-54f0-4335-a058-83213ce804a4",
+                    "organization": {
+                        "id": "8689c464-371f-4782-b392-30578a0441c0",
+                        "name": "Sanghaya Labs 4",
+                        "otply_users": [
+                            {
+                                "name": "Von Uyvico",
+                                "email": "von@sanghaya2.org",
+                                "role": "ADMIN"
+                            }
+                        ]
+                    }
+                }
+  /api/v1/health:
+    get:
+      tags:
+        - default
+      summary: Health Check
+      responses:
+        '200':
+          description: OK
+          headers:
+            Age:
+              schema:
+                type: integer
+                example: '0'
+            Cache-Control:
+              schema:
+                type: string
+                example: public, max-age=0, must-revalidate
+            Content-Length:
+              schema:
+                type: integer
+                example: '35'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Date:
+              schema:
+                type: string
+                example: Wed, 22 Oct 2025 21:06:24 GMT
+            Etag:
+              schema:
+                type: string
+                example: W/"23-JjHZCXUsLTfYOGAer/UkeRuyuT4"
+            Server:
+              schema:
+                type: string
+                example: Vercel
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=63072000
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            X-Vercel-Cache:
+              schema:
+                type: string
+                example: MISS
+            X-Vercel-Id:
+              schema:
+                type: string
+                example: sin1::sin1::jg8g5-1761167184327-8ca12459aa88
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "message": "API is fully working."
+                }
+  /api/v1/accounts/login:
+    post:
+      tags:
+        - default
+      summary: Login Account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: von@sanghaya2.org
+                password: password
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            Basic
+            MzBjMTFlZjYtYTg3MS00ZTliLTgyNjgtN2JlMWU0MzcxMzViOjhqdklDbEg5Y2pvV2Nnc05yTW4zcFNkOGRKWXhlOXc=
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Set-Cookie:
+              schema:
+                type: string
+                example: >-
+                  otply_refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIwMzk4OGI5LTNhOTMtNGMzMS1iOGU1LTcyMWJhN2JiMzYwZiIsIm5hbWUiOiJWb24gVXl2aWNvIiwiZW1haWwiOiJ2b25Ac2FuZ2hheWEub3JnIiwidXNlcm5hbWUiOiJ2b251eXZpY28iLCJyb2xlIjoiVVNFUiIsIm9yZ2FuaXphdGlvbl9pZCI6IjAzMmU2Y2UxLTg4MTItNGIxOS1iYzhhLTI3MzZkNjRhMzFmYSIsImlhdCI6MTc2MTI1MjkwMywiZXhwIjoxNzYyNDYyNTAzfQ.gz5aGkKnGrtm5Sop_xV4kOn4f7bB43VTQe3Uswmaufw;
+                  Max-Age=2592000; Path=/; Expires=Sat, 22 Nov 2025 20:55:03
+                  GMT; HttpOnly; SameSite=Lax
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '843'
+            ETag:
+              schema:
+                type: string
+                example: W/"34b-eQA2D5YdcSfzC+eE0nP+M91qrVw"
+            Date:
+              schema:
+                type: string
+                example: Thu, 23 Oct 2025 20:55:03 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "correlationId": "67bd429f-c2ed-42b0-88b8-5b860b75eec8",
+                    "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIwMzk4OGI5LTNhOTMtNGMzMS1iOGU1LTcyMWJhN2JiMzYwZiIsIm5hbWUiOiJWb24gVXl2aWNvIiwiZW1haWwiOiJ2b25Ac2FuZ2hheWEub3JnIiwidXNlcm5hbWUiOiJ2b251eXZpY28iLCJyb2xlIjoiVVNFUiIsIm9yZ2FuaXphdGlvbl9pZCI6IjAzMmU2Y2UxLTg4MTItNGIxOS1iYzhhLTI3MzZkNjRhMzFmYSIsImlhdCI6MTc2MTI1MjkwMywiZXhwIjoxNzYxMzM5MzAzfQ.0uZaCWxFUvvweK5EXqaZCVUJtsZd3ac4e8Df-c3Jjjo",
+                    "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIwMzk4OGI5LTNhOTMtNGMzMS1iOGU1LTcyMWJhN2JiMzYwZiIsIm5hbWUiOiJWb24gVXl2aWNvIiwiZW1haWwiOiJ2b25Ac2FuZ2hheWEub3JnIiwidXNlcm5hbWUiOiJ2b251eXZpY28iLCJyb2xlIjoiVVNFUiIsIm9yZ2FuaXphdGlvbl9pZCI6IjAzMmU2Y2UxLTg4MTItNGIxOS1iYzhhLTI3MzZkNjRhMzFmYSIsImlhdCI6MTc2MTI1MjkwMywiZXhwIjoxNzYyNDYyNTAzfQ.gz5aGkKnGrtm5Sop_xV4kOn4f7bB43VTQe3Uswmaufw"
+                }
+  /api/v1/accounts:
+    post:
+      tags:
+        - default
+      summary: Create Account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: von@sanghaya2.org
+                password: password
+                name: Von Uyvico
+                username: vonuyvico2
+                organization_id: 032e6ce1-8812-4b19-bc8a-2736d64a31fa
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            Basic
+            MzBjMTFlZjYtYTg3MS00ZTliLTgyNjgtN2JlMWU0MzcxMzViOjhqdklDbEg5Y2pvV2Nnc05yTW4zcFNkOGRKWXhlOXc=
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '255'
+            ETag:
+              schema:
+                type: string
+                example: W/"ff-7d2mK8UZo1pcI5PVxyGaW2eMc48"
+            Date:
+              schema:
+                type: string
+                example: Thu, 23 Oct 2025 20:54:54 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "correlationId": "f3e66de1-6763-46fe-839a-44fc0464c58d",
+                    "account": {
+                        "id": "eaa52cf0-cd74-45a9-a040-1505044e3961",
+                        "name": "Von Uyvico",
+                        "email": "von@sanghaya2.org",
+                        "username": "vonuyvico2",
+                        "role": "USER",
+                        "organization_id": "032e6ce1-8812-4b19-bc8a-2736d64a31fa"
+                    }
+                }
+  /api/v1/accounts/me:
+    get:
+      tags:
+        - default
+      summary: Get Profile
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            Basic
+            MzBjMTFlZjYtYTg3MS00ZTliLTgyNjgtN2JlMWU0MzcxMzViOjhqdklDbEg5Y2pvV2Nnc05yTW4zcFNkOGRKWXhlOXc=
+        - name: x-otply-session
+          in: header
+          schema:
+            type: string
+          example: 01fca19a-0d64-4d5b-b704-a5abf829b66b
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '287'
+            ETag:
+              schema:
+                type: string
+                example: W/"11f-uD/EglecOFwq2MUfM26NPm0CFic"
+            Date:
+              schema:
+                type: string
+                example: Thu, 23 Oct 2025 20:53:40 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "correlationId": "f1feb039-9263-4dc7-aab7-90eff0e01bef",
+                    "profile": {
+                        "id": "b03988b9-3a93-4c31-b8e5-721ba7bb360f",
+                        "name": "Von Uyvico",
+                        "email": "von@sanghaya.org",
+                        "username": "vonuyvico",
+                        "role": "USER",
+                        "organization_id": "032e6ce1-8812-4b19-bc8a-2736d64a31fa",
+                        "iat": 1761252671,
+                        "exp": 1761339071
+                    }
+                }
+  /api/v1/accounts/otp:
+    get:
+      tags:
+        - default
+      summary: Get OTP for provider
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            Basic
+            MzBjMTFlZjYtYTg3MS00ZTliLTgyNjgtN2JlMWU0MzcxMzViOjhqdklDbEg5Y2pvV2Nnc05yTW4zcFNkOGRKWXhlOXc=
+        - name: x-otply-session
+          in: header
+          schema:
+            type: string
+          example: 6f3934b6-af74-11f0-b554-8edfb0d51c0b
+        - name: slug
+          in: query
+          schema:
+            type: string
+          example: GPT-DEV-TEST
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '103'
+            ETag:
+              schema:
+                type: string
+                example: W/"67-1yA7FjHuaqM6RnCBSoEAXEAZg1I"
+            Date:
+              schema:
+                type: string
+                example: Thu, 23 Oct 2025 21:09:52 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "correlationId": "c4208d7a-2300-4f3d-885c-ac8e8f87c324",
+                    "otp": {
+                        "otp": "091868",
+                        "expires": 1761253800000
+                    }
+                }
+  /api/v1/otply/providers:
+    post:
+      tags:
+        - default
+      summary: Register Provider
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                slug: GPT-DEV-TEST4
+                name: ChatGPT
+                identifier: marc@openai.com
+                secret: AJSIJSFIJ
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            Basic
+            MzBjMTFlZjYtYTg3MS00ZTliLTgyNjgtN2JlMWU0MzcxMzViOjhqdklDbEg5Y2pvV2Nnc05yTW4zcFNkOGRKWXhlOXc=
+        - name: x-otply-session
+          in: header
+          schema:
+            type: string
+          example: 6f3934b6-af74-11f0-b554-8edfb0d51c0b
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '184'
+            ETag:
+              schema:
+                type: string
+                example: W/"b8-4A/t5fXVIUTbgZ4gSaOs3ultI20"
+            Date:
+              schema:
+                type: string
+                example: Thu, 23 Oct 2025 21:09:16 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "correlationId": "ef2de119-4ced-4368-ad58-1e804dc39d7d",
+                    "provider": {
+                        "id": "9266831b-29da-43fb-a078-1f9b6dfcd1b3",
+                        "name": "ChatGPT",
+                        "identifier": "marc@openai.com",
+                        "slug": "GPT-DEV-TEST2"
+                    }
+                }
+        '403':
+          description: Forbidden
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '213'
+            ETag:
+              schema:
+                type: string
+                example: W/"d5-Mo7c4h0v3oK7CN8oH0QjH+NHWaA"
+            Date:
+              schema:
+                type: string
+                example: Thu, 23 Oct 2025 21:17:58 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "correlationId": "76c968bf-6b53-452a-b75f-6acf1166f7c4",
+                    "error": {
+                        "name": "USER_ACTION_UNAUTHORIZED_BUSINESS_ERROR",
+                        "payload": "You are not allowed to perform this action. This action requires elevated privileges."
+                    }
+                }
+    get:
+      tags:
+        - default
+      summary: List Available Providers
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            Basic
+            MzBjMTFlZjYtYTg3MS00ZTliLTgyNjgtN2JlMWU0MzcxMzViOjhqdklDbEg5Y2pvV2Nnc05yTW4zcFNkOGRKWXhlOXc=
+        - name: x-otply-session
+          in: header
+          schema:
+            type: string
+          example: 6f3934b6-af74-11f0-b554-8edfb0d51c0b
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '186'
+            ETag:
+              schema:
+                type: string
+                example: W/"ba-AKU08348rK9qT39dHTjaEnZxezQ"
+            Date:
+              schema:
+                type: string
+                example: Thu, 23 Oct 2025 21:08:57 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "correlationId": "380aba8c-9675-4991-a289-6d9dc7e07c48",
+                    "providers": [
+                        {
+                            "id": "f0ea9b88-c856-4f37-8d29-21970f689494",
+                            "name": "ChatGPT",
+                            "slug": "GPT-DEV-TEST",
+                            "identifier": "marc@openai.com"
+                        }
+                    ]
+                }
+  /api/v1/otply/providers/f64792b1-06f4-408b-a562-518644c687ab:
+    delete:
+      tags:
+        - default
+      summary: Delete Provider
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            Basic
+            MzBjMTFlZjYtYTg3MS00ZTliLTgyNjgtN2JlMWU0MzcxMzViOjhqdklDbEg5Y2pvV2Nnc05yTW4zcFNkOGRKWXhlOXc=
+        - name: x-otply-session
+          in: header
+          schema:
+            type: string
+          example: 6f3934b6-af74-11f0-b554-8edfb0d51c0b
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '99'
+            ETag:
+              schema:
+                type: string
+                example: W/"63-0BgU9XkuviiYGzgvO5pqeLg1iAU"
+            Date:
+              schema:
+                type: string
+                example: Thu, 23 Oct 2025 21:22:35 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "correlationId": "926f7719-3d3f-4ddd-96f9-877bccf838c9",
+                    "message": "Provider deleted successfully."
+                }
+        '403':
+          description: Forbidden
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '213'
+            ETag:
+              schema:
+                type: string
+                example: W/"d5-SegxVJlEr2ND7WyWiwmgMHjQz4k"
+            Date:
+              schema:
+                type: string
+                example: Thu, 23 Oct 2025 21:21:42 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "correlationId": "4e12e27a-abf6-4d70-955d-26d0aef17a8f",
+                    "error": {
+                        "name": "USER_ACTION_UNAUTHORIZED_BUSINESS_ERROR",
+                        "payload": "You are not allowed to perform this action. This action requires elevated privileges."
+                    }
+                }
+  /api/v1/docs:
+    get:
+      tags:
+        - default
+      summary: Swagger Docs
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}

@@ -1,0 +1,74 @@
+generator client {
+    provider = "prisma-client-js"
+    output   = "../generated/prisma"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model otply_organization {
+    id             String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+    name           String
+    otply_users    otply_user[]
+    otply_provider otply_provider[]
+}
+
+model otply_user {
+    id              String              @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+    name            String?
+    email           String              @unique
+    username        String              @unique
+    password_hash   String
+    role            OtplyUserRole       @default(USER)
+    organization_id String?             @db.Uuid
+    organization    otply_organization? @relation(fields: [organization_id], references: [id])
+    otply_audit_log otply_audit_log[]
+}
+
+model otply_user_refresh_token {
+    id            String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+    refresh_token String @unique
+}
+
+model otply_api_client {
+    id            String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+    client_id     String
+    client_secret String
+}
+
+model otply_api_client_refresh_token {
+    id            String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+    refresh_token String @unique
+}
+
+model otply_provider {
+    id              String             @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+    name            String
+    identifier      String
+    slug            String
+    secret          String
+    organization_id String             @db.Uuid
+    organization    otply_organization @relation(fields: [organization_id], references: [id])
+
+    @@unique([slug, organization_id])
+}
+
+model otply_audit_log {
+    id         String          @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+    action     OtplyActionType
+    subject    String          @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+    otply_user otply_user      @relation(fields: [subject], references: [id])
+}
+
+enum OtplyActionType {
+    COPY
+    REMOVE_PROVIDER
+    ADD_PROVIDER
+}
+
+enum OtplyUserRole {
+    ADMIN
+    USER
+}
