@@ -21,8 +21,8 @@ OTPly follows a clean, layered architecture pattern with clear separation of con
 -   **Framework**: Express.js 5.x
 -   **Database**: PostgreSQL with Prisma ORM
 -   **Authentication**: JWT (JSON Web Tokens) with refresh token rotation
--   **Password Hashing**: bcryptjs
--   **TOTP Generation**: totp-generator library
+-   **Password Hashing**: `bcryptjs`
+-   **TOTP Generation**: `totp-generator` library
 -   **Validation**: Zod schemas
 -   **Documentation**: OpenAPI 3.0 (Swagger)
 -   **Deployment**: Vercel-ready with serverless support
@@ -41,7 +41,7 @@ OTPly follows a clean, layered architecture pattern with clear separation of con
 
 -   **RFC 6238 Compliant**: Standard TOTP algorithm implementation
 -   **Time-based Codes**: 6-digit codes with configurable expiration
--   **Secret Management**: Secure storage of TOTP secrets per provider
+-   **Secret Management**: Secure storage of TOTP secrets per provider (To be implemented)
 -   **Organization Isolation**: Complete data separation between organizations
 
 ### Security Middleware
