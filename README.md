@@ -93,10 +93,10 @@ OTPly follows a clean, layered architecture pattern with clear separation of con
 -   `GET /api/v1/accounts/otp` - Generate OTP for provider
 -   `GET /api/v1/organizations/:id` - Get organization details
 -   `POST /api/v1/organizations` - Create organization
+-   `GET /api/v1/otply/providers` - List TOTP providers
 
 ### Admin Endpoints
 
--   `GET /api/v1/otply/providers` - List TOTP providers
 -   `POST /api/v1/otply/providers` - Register TOTP provider
 -   `DELETE /api/v1/otply/providers/:id` - Delete TOTP provider
 
