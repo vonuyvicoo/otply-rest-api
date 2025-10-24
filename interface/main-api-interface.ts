@@ -4,6 +4,7 @@ import express, { Request, Response, NextFunction } from "express";
 
 // Deps
 import cookieParser from "cookie-parser";
+import cors from "cors";
 
 // Global Handlers
 import { AppError, ErrorHandler } from "../handlers/middleware/error-handler.js";
@@ -20,6 +21,15 @@ const app = express();
 const port = process.env.PORT;
 
 const BASE_PATH = "/api/v1";
+
+// CORS Configuration
+const corsOptions = {
+    origin: process.env.CORS_ORIGIN || "http://localhost:3001",
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+};
+app.use(cors(corsOptions));
 
 // Dep middlewares
 app.use(cookieParser());

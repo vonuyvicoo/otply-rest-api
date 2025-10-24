@@ -138,6 +138,9 @@ OTPly follows a clean, layered architecture pattern with clear separation of con
     PORT=3000
     NODE_ENV="development"
 
+    # CORS Configuration
+    CORS_ORIGIN="http://localhost:3001"
+
     # Optional: Cookie Domain (for subdomain persistence)
     COOKIE_DOMAIN=".yourdomain.com"
     ```

@@ -3,7 +3,8 @@ import express from "express";
 import {
     loginImpl,
     getOTPForUserImpl,
-    createAccountImpl
+    createAccountImpl,
+    logoutImpl
 } from "../../impl/account-impl.js";
 
 import { RequireJWT } from "../../handlers/middleware/user-auth-handler.js";
@@ -63,6 +64,13 @@ router.get("/accounts/otp", RequireJWT, async (req, res) => {
         correlationId: req.correlationId,
         otp: (await getOTPForUserImpl(req.query, req.user))
     })
+});
+
+router.post("/accounts/logout", RequireJWT, async (req, res) => {
+    await logoutImpl(req.cookies["otply_refresh_token"]);
+    res.clearCookie("otply_access_token");
+    res.clearCookie("otply_refresh_token");
+    res.json({ correlationId: req.correlationId });
 });
 
 export default router;
